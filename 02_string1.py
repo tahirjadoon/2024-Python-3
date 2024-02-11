@@ -1,32 +1,8 @@
 import sys
-from colorama import Fore, Back, Style
-#https://pypi.org/project/colorama/ 
 
-def printHeader(header):
-    length = len(header)
-    dashes = "-" * length
-    print(f"{Fore.YELLOW}{dashes}")
-    print(header)
-    print(f"{dashes}{Style.RESET_ALL}")
-
-def printFooter():
-    footer = "^" * 100
-    print(f"{Fore.YELLOW}{footer}{Style.RESET_ALL}")
-    print()
-
-def printItemTab(item, help=""):
-    tab = "\t"
-    if not help:
-        print(f"{tab}{item}")
-    else:
-        print(f"{tab}{item} {Fore.LIGHTYELLOW_EX}{help}{Style.RESET_ALL}")
-
-def printItem(item, help):
-    if not help:
-        print(item)
-    else:
-        print(f"{item} {Fore.LIGHTYELLOW_EX}{help}{Style.RESET_ALL}")
-
+#importing the functions.py and using the methods specified in it
+#from functions import printHeader
+from functions1_simple import *
 
 #a fucntion that works with different build in string methods
 def builtInStringMethods():
