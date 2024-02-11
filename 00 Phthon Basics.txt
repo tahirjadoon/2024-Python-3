@@ -1,0 +1,13 @@
+Python is a dynamic, interpreted (bytecode-compiled) language. 
+There are no type declarations of variables, parameters, functions, or methods in source code. 
+Lose the compile-time type checking of the source code. 
+Python tracks the types of all values at runtime and flags code that does not make sense as it runs.
+
+Use PIP to install pythin packages 
+	Check pip is installed 
+		pip help
+	Otherwise install pip 
+		https://www.liquidweb.com/kb/install-pip-windows/
+		
+Then install progams using pip 
+	pip install colorama 
