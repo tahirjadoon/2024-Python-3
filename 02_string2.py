@@ -62,18 +62,6 @@ def mixUp(a, b):
     return a_swapped + ' ' + b_swapped
 
 """
-test
-"""
-def test(got, expected, original):
-    #putting colors, the import is in functions1_simple.py
-    if(got == expected):
-        prefix = f'{Fore.GREEN} OK {Style.RESET_ALL}'
-    else:
-        prefix = f'{Fore.RED} X {Style.RESET_ALL}'
-    printItemTab(f'%s original: %s {Fore.BLUE}got: %s{Style.RESET_ALL} {Fore.CYAN}expected: %s{Style.RESET_ALL}' % (prefix, repr(original), repr(got), repr(expected)))
-    
-
-"""
 Main
 """
 def main():
