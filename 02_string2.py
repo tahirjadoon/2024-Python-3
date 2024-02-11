@@ -62,6 +62,39 @@ def mixUp(a, b):
     return a_swapped + ' ' + b_swapped
 
 """
+Given a string, if its length is at least 3,
+add 'ing' to its end.
+Unless it already ends in 'ing', in which case
+add 'ly' instead.
+If the string length is less than 3, leave it unchanged.
+Return the resulting string.
+"""
+def verbing(s):
+    if len(s) >= 3:
+        if s[-3:] != "ing": 
+            s = s + "ing"
+        else: 
+            s = s + "ly"
+    return s
+
+"""
+Given a string, find the first appearance of the
+substring 'not' and 'bad'. If the 'bad' follows
+the 'not', replace the whole 'not'...'bad' substring
+with 'good'.
+Return the resulting string.
+So 'This dinner is not that bad!' yields:
+This dinner is good!
+"""
+def notBadFindReplace(s):
+    n = s.find('not')
+    b = s.find('bad')
+    if n != -1 and b != -1 and b > n:
+        #pick upto n index, add good and then pick b index + size of bad which is 3
+        s = s[:n] + 'good' + s[b+3:]
+    return s
+
+"""
 Main
 """
 def main():
@@ -91,6 +124,18 @@ def main():
     test(mixUp('dog', 'dinner'), 'dig donner', 'dog dinner')
     test(mixUp('gnash', 'sport'), 'spash gnort', 'gnash sport')
     test(mixUp('pezzy', 'firm'), 'fizzy perm', 'pezzy firm')
+    print()
+
+    printHeader("verbing Test")
+    test(verbing('hail'), 'hailing', 'hail')
+    test(verbing('swiming'), 'swimingly', 'swiming')
+    test(verbing('do'), 'do', 'do')
+    print()
+
+    printHeader("notBadFindReplace Test")
+    test(notBadFindReplace('This movie is not so bad'), 'This movie is good', 'This movie is not so bad')
+    test(notBadFindReplace('This dinner is not that bad!'), 'This dinner is good!', 'This dinner is not that bad!')
+    test(notBadFindReplace('This tea is not hot'), 'This tea is not hot', 'This tea is not hot')
     print()
 
 # Standard boilerplate to call the main() function.
