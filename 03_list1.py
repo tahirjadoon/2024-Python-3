@@ -47,6 +47,37 @@ def sortTuplesOnLastItem(tuples):
     sortedTuple = sorted(tuples, key=lambda i: i[-1])
     return sortedTuple
 
+# Given a list of numbers, return a list where
+# all adjacent == elements have been reduced to a single element,
+# so [1, 2, 2, 3] returns [1, 2, 3]. You may create a new list or
+# modify the passed in list.
+def removeAdjacent(nums):
+    result = []
+    for num in nums:
+        if len(result) == 0 or num != result[-1]:
+            result.append(num)
+    return result
+
+# Given two lists sorted in increasing order, create and return a merged
+# list of all the elements in sorted order. You may modify the passed in lists.
+# Ideally, the solution should work in "linear" time, making a single
+# pass of both lists.
+def linearMerge(list1, list2):
+    result = []
+    while len(list1) and len(list2):
+        if(list1[0] < list2[0]):
+            result.append(list1[0]) #result.append(list1.pop(0))
+            list1.pop(0)
+        else:
+            result.append(list2[0]) #result.append(list2.pop(0))
+            list2.pop(0)
+    #add what ever is remaining
+    if len(list1):
+        result.extend(list1)
+    if len(list2):
+        result.extend(list2)
+    return result
+
 def ListMethods():
     printHeader("builtInListMethods")
     printItemTab(f"{Fore.GREEN}append(), clear(), copy(), count(), extend(), index(), insert(), pop(), remove(), reverse(), sort(), startswith(){Style.RESET_ALL}")
@@ -54,7 +85,7 @@ def ListMethods():
 
 def main():
     ListMethods()
-    
+
     printHeader("countFirstLastCharSame Test")
     list1 = ['aba', 'xyz', 'aa', 'x', 'bbb']
     list2 = ['', 'x', 'xy', 'xyx', 'xx']
@@ -88,7 +119,34 @@ def main():
     test(sortTuplesOnLastItem(tuple3), tuple3TestOutcome, tuple3)
     print()
 
+    printHeader("removeAdjacent Test")
+    list7 = [1, 2, 2, 3]
+    list7TestOutcome = [1, 2, 3]
+    list8 = [2, 2, 3, 3, 3]
+    list8TestOutcome = [2, 3]
+    list9 = []
+    list9TestOutcome = []
+    test(removeAdjacent(list7), list7TestOutcome, list7)
+    test(removeAdjacent(list8), list8TestOutcome, list8)
+    test(removeAdjacent(list9), list9TestOutcome, list9)
+    print()
     
+    printHeader("linearMerge Test")
+    merge1_1 =  ['aa', 'xx', 'zz']
+    merge1_2 = ['bb', 'cc']
+    merge1_testOutcome = ['aa', 'bb', 'cc', 'xx', 'zz']
+    merge1_original = []
+    merge1_original.append(merge1_1[:]) #create a copy
+    merge1_original.append(merge1_2[:]) #create a copy
+    merge2_1 = ['aa', 'xx']
+    merge2_2 = ['bb', 'cc', 'zz']
+    merge2_testOutcome = ['aa', 'bb', 'cc', 'xx', 'zz']
+    merge2_original = []
+    merge2_original.append(merge2_1[:]) #create a copy
+    merge2_original.append(merge2_2[:]) #create a copy
+    test(linearMerge(merge1_1, merge1_2), merge1_testOutcome, merge1_original)
+    test(linearMerge(merge2_1, merge2_2), merge2_testOutcome, merge2_original)
+    print()
 
 # Standard boilerplate to call the main() function.
 if __name__ == '__main__':
